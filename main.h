@@ -5,6 +5,12 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <stdlib.h>
+
+typedef struct directories {
+	char *dir;
+	struct directories *next;
+} dirs;
 
 int execmd(char *user_input);
 #endif /* MAIN_H */
