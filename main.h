@@ -6,4 +6,5 @@
 #include <string.h>
 #include <sys/wait.h>
 
+int execmd(char *user_input);
 #endif /* MAIN_H */
