@@ -18,50 +18,54 @@ int main(int ac, char **av)
 	const char *str = "$ ";
 	int pid;
 
-	command = malloc(sizeof(command));
-	while (1)
-	{
-		counter = 0;
-		write(1, str, 2);
-
-		/* get input from user and also handle EOF or CTRL + D*/
-		if (getlinei(&user_input, &size_of_command, stdin) == -1)
-			return (0);
-
-		/* Remove the \n in the command */
-		user_input = strtok(user_input, "\n");
-
-		/* tokenize command using strtok */
-		command = strtok(user_input, delim);
-
-		/* keep tokenizing the command */
-		while (command != NULL)
+	if (isatty(STDIN_FILENO)){
+		while (1)
 		{
-			commands[counter] = strdup(command);
-			command = strtok(NULL, delim);
-			counter++;
+			counter = 0;
+			write(1, str, 2);
+	
+			/* get input from user and also handle EOF or CTRL + D*/
+			if (getlinei(&user_input, &size_of_command, stdin) == -1)
+				return (0);
+	
+			/* Remove the \n in the command */
+			user_input = strtok(user_input, "\n");
+	
+			/* tokenize command using strtok */
+			command = strtok(user_input, delim);
+	
+			/* keep tokenizing the command */
+			while (command != NULL)
+			{
+				commands[counter] = strdup(command);
+				command = strtok(NULL, delim);
+				counter++;
+			}
+	
+			/* handle number of arguments */
+			/* I comments out this code since */
+			/* if (execve(commands[0], commands, NULL) == -1)*/
+			/* will do the same thing*/
+			/* but it works you comment it out and see.*/
+			/*if (commands[1] != NULL)*/
+			/*	perror("./shell: No such file or directory");*/
+	
+			/* create a new process that will execute the command */
+			pid = fork();
+			wait(NULL);
+			if (pid == 0)
+				if (execve(commands[0], commands, NULL) == -1)
+					perror("./shell: No such file or directory");
+	
+			while (counter--)
+				commands[counter] = NULL;
+	
 		}
-
-		/* handle number of arguments */
-		/* I comments out this code since */
-		/* if (execve(commands[0], commands, NULL) == -1)*/
-		/* will do the same thing*/
-		/* but it works you comment it out and see.*/
-		/*if (commands[1] != NULL)*/
-		/*	perror("./shell: No such file or directory");*/
-
-		/* create a new process that will execute the command */
-		pid = fork();
-		wait(NULL);
-		if (pid == 0)
-			if (execve(commands[0], commands, NULL) == -1)
-				perror("./shell: No such file or directory");
-
-		while (counter--)
-			commands[counter] = NULL;
-
 	}
-
+	else
+	{
+		
+	}
 	return (0);
 }
 
