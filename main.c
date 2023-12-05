@@ -25,7 +25,7 @@ int main(int ac, char **av)
 		write(1, str, 2);
 
 		/* get input from user and also handle EOF or CTRL + D*/
-		if (getlinei(&user_input, &size_of_command, stdin) == -1)
+		if (getline(&user_input, &size_of_command, stdin) == -1)
 			return (0);
 
 		/* Remove the \n in the command */
@@ -34,10 +34,10 @@ int main(int ac, char **av)
 		/* tokenize command using strtok */
 		command = strtok(user_input, delim);
 
-		/* keep tokenizing the command */
+		/* keep tokenizing the user_input */
 		while (command != NULL)
 		{
-			commands[counter] = strdup(command);
+			commands[counter] = command;
 			command = strtok(NULL, delim);
 			counter++;
 		}
@@ -46,7 +46,7 @@ int main(int ac, char **av)
 		/* I comments out this code since */
 		/* if (execve(commands[0], commands, NULL) == -1)*/
 		/* will do the same thing*/
-		/* but it works you comment it out and see.*/
+		/* but it works you can comment it out and see.*/
 		/*if (commands[1] != NULL)*/
 		/*	perror("./shell: No such file or directory");*/
 
@@ -54,7 +54,7 @@ int main(int ac, char **av)
 		pid = fork();
 		wait(NULL);
 		if (pid == 0)
-			if (execve(commands[0], commands, NULL) == -1)
+			if(execve(commands[0], commands, NULL) == -1)
 				perror("./shell: No such file or directory");
 
 		while (counter--)
