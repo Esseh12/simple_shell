@@ -31,6 +31,7 @@ void execmd(char *user_input)
 
 	/* create a new process that will execute the command */
 	actual_command = get_local(commands[0]);
+
 	if (actual_command != NULL)
 	{
 		pid = fork();
@@ -43,8 +44,12 @@ void execmd(char *user_input)
 		}
 	}
 	else
+	{
 		perror("./shell");
+	}
 
 	while (counter--)
+	{
 		commands[counter] = NULL;
+	}
 }

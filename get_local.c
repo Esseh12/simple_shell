@@ -22,17 +22,16 @@ char *get_local(char *command)
 		strcpy(temp_path, file_path);
 		strcat(temp_path, "/");
 		strcat(temp_path, command);
-		strcat(temp_path, "\0");
-
+		
 		if (stat(temp_path, &st) == 0)
 		{
 			return (temp_path);
 		}
+
 		file_path = strtok(NULL, ":");
 		
 	}
-	free(temp_path);
-
+	
 	return (NULL);
 	
 }
