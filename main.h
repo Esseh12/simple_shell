@@ -14,4 +14,6 @@ typedef struct directories {
 } dirs;
 
 int execmd(char *user_input);
+
+extern char **environ;
 #endif /* MAIN_H */
