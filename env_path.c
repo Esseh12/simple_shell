@@ -1,10 +1,8 @@
 #include "main.h"
 
-extern char **environ;
-
 /**
  * env_path - handle paths
- * @command: the command that the user enters
+ *@command: the command that the user enters
  *
  * Return: nothing
  */
@@ -17,6 +15,14 @@ void env_path(char *command)
 		printf("%s\n", environ[12]);
 	}
 }
+
+/**
+ * main - Entry point of the program
+ *
+ * Description: It calls the env_path function.
+ *
+ * Return: 0
+ */
 
 int main(void)
 {
