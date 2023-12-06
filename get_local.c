@@ -12,11 +12,12 @@ char *get_local(char *command)
 	char *path = getenv("PATH");
 	char *file_path = strtok(path, ":");
 	struct stat st;
+	char *temp_path;
 
 	while (file_path != NULL)
 	{
 		/* allocate memory */
-		char *temp_path = malloc(strlen(file_path) + strlen(command) + 2);
+		temp_path = malloc(strlen(file_path) + strlen(command) + 2);
 
 		strcpy(temp_path, file_path);
 		strcat(temp_path, "/");
@@ -30,6 +31,8 @@ char *get_local(char *command)
 		file_path = strtok(NULL, ":");
 		
 	}
+	free(temp_path);
+
 	return (NULL);
 	
 }
