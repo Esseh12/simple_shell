@@ -11,7 +11,7 @@ void execmd(char *user_input)
 	char *command;
 	char *commands[1024];
 	char *delim = " ";
-	char counter = 0;
+	int counter = 0;
 	int pid;
 
 	/* Remove the \n in the command */
@@ -29,11 +29,18 @@ void execmd(char *user_input)
 	}
 
 	/* create a new process that will execute the command */
-	pid = fork();
-	wait(NULL);
+	if (get_local(commands[0]) != NULL)
+	{
+		pid = fork();
+		wait(NULL);
+	}
 	if (pid == 0)
+	{
 		if (execve(commands[0], commands, NULL) == -1)
 			perror("./shell");
+	}
+	else
+		printf("Does not exist\n");
 
 	while (counter--)
 		commands[counter] = NULL;

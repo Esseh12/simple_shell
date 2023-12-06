@@ -9,8 +9,7 @@
 
 char *get_local(char *command)
 {
-	char *path = getenv("PATH"); 
-	char *copy_path = strdup(path);
+	char *path = getenv("PATH");
 	char *file_path = strtok(path, ":");
 	struct stat st;
 
@@ -27,19 +26,10 @@ char *get_local(char *command)
 		if (stat(temp_path, &st) == 0)
 		{
 			return (temp_path);
-		}	
-		
-		else{
-			printf("file not found!\n");
 		}
-		
 		file_path = strtok(NULL, ":");
 		
 	}
+	return (NULL);
 	
-}
-
-int main(void)
-{
-	get_local("ls");
 }

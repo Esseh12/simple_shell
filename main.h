@@ -14,7 +14,7 @@ typedef struct directories {
 	struct directories *next;
 } dirs;
 
-int execmd(char *user_input);
+void execmd(char *user_input);
 
 char *get_local(char *command);
 #endif /* MAIN_H */

@@ -1,5 +1,4 @@
 #include "main.h"
-#include "execmd.c"
 
 #define MAX_TOKENS 1
 /**
@@ -13,18 +12,15 @@ int main(int ac, char **av)
 {
 	char *user_input;
 	size_t size_of_command = 32;
-	char *command;
-	char *commands[1024];
-	char *delim = " ";
-	int counter = 0;
 	const char *str = "$ ";
-	int pid;
+
+	(void)ac;
+	(void)av;
 
 	if (isatty(STDIN_FILENO))
 	{
 		while (1)
 		{
-			counter = 0;
 			write(1, str, 2);
 
 			/* get input from user and also handle EOF or CTRL + D*/
@@ -44,13 +40,3 @@ int main(int ac, char **av)
 	}
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
