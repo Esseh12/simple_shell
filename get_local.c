@@ -9,19 +9,24 @@
 
 char *get_local(char *command)
 {
-	char *path = getenv("PATH");
+	char *path = getenv("PATH"); 
+	char *copy_path = strdup(path);
 	char *file_path = strtok(path, ":");
 	struct stat st;
 
 	while (file_path != NULL)
 	{
-		strcat(file_path, "/");
-		strcat(file_path, command);
-		strcat(file_path, "\0");
+		/* allocate memory */
+		char *temp_path = malloc(strlen(file_path) + strlen(command) + 2);
 
-		if (stat(file_path, &st) == 0)
+		strcpy(temp_path, file_path);
+		strcat(temp_path, "/");
+		strcat(temp_path, command);
+		strcat(temp_path, "\0");
+
+		if (stat(temp_path, &st) == 0)
 		{
-			printf("file is found\n");
+			return (temp_path);
 		}	
 		
 		else{
@@ -36,5 +41,5 @@ char *get_local(char *command)
 
 int main(void)
 {
-	get_local("anything");
+	get_local("ls");
 }
