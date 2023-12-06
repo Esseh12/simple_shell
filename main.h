@@ -7,11 +7,12 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
-extern char **environ;
 typedef struct directories {
 	char *dir;
 	struct directories *next;
 } dirs;
 
 int execmd(char *user_input);
+
+extern char **environ;
 #endif /* MAIN_H */
