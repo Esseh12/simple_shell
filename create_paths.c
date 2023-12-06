@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  * create_paths - create a linkedlist of dir
  * @paths: the environ list of path
