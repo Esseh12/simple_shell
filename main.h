@@ -9,6 +9,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+extern char **environ;
 typedef struct directories {
 	char *dir;
 	struct directories *next;
