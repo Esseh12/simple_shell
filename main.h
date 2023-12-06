@@ -7,6 +7,7 @@
 #include <sys/wait.h>
 #include <stdlib.h>
 
+extern char **environ;
 typedef struct directories {
 	char *dir;
 	struct directories *next;
