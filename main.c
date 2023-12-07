@@ -27,6 +27,10 @@ int main(int ac, char **av)
 			if (getline(&user_input, &size_of_command, stdin) == -1)
 				return (0);
 
+			/* exiting the shell */
+			if (strcmp(user_input, "exit\n") == 0)
+				return (0);
+
 			/* execute the command */
 			execmd(user_input);
 		}
