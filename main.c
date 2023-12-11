@@ -1,6 +1,6 @@
 #include "main.h"
 
-#define MAX_TOKENS 1
+#define MAX_TOKENS 50
 /**
  * main - simple shell
  * @ac: arguments coun
@@ -8,11 +8,14 @@
  *
  * Return: 0 always
  */
-int main(int ac, char **av)
+int main(int ac, char **av, char *envp[])
 {
 	char *user_input;
 	size_t size_of_command = 32;
 	const char *str = "$ ";
+	char **copy_env;
+	unsigned int i;
+	size_t length;
 
 	(void)ac;
 	(void)av;
@@ -31,6 +34,22 @@ int main(int ac, char **av)
 			if (strcmp(user_input, "exit\n") == 0)
 				return (0);
 
+			/* handling the builtin env */
+			if (strcmp(user_input, "env\n") == 0)
+			{
+				/* allocating memory for copy_env */
+				copy_env = malloc(sizeof(char *) * MAX_TOKENS);
+
+				for (i = 0; envp[i] != NULL; i++)
+				{
+					copy_env[i] = strdup(envp[i]);
+					length = sizeof(envp[i]) - 1;
+					strcat(copy_env[i], "\n");
+					write(1, copy_env[i], length);
+				}
+
+				free(copy_env);
+			}
 			/* execute the command */
 			execmd(user_input);
 		}
