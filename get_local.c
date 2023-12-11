@@ -12,13 +12,16 @@ char *get_local(char *command)
 	char *path = getenv("PATH");
 	char *file_path = strdup(path);
 	char *path_token = strtok(file_path, ":");
-	struct stat st;
+	struct stat st, st_t;
 	char *temp_path;
 
 	while (path_token != NULL)
 	{
 		/* allocate memory */
 		temp_path = malloc(strlen(file_path) + strlen(command) + 2);
+
+		if (stat(command, &st_t) == 0)
+			return (command);
 
 		strcpy(temp_path, path_token);
 		strcat(temp_path, "/");
