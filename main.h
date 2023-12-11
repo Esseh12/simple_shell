@@ -9,7 +9,16 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-typedef struct directories {
+/**
+ * struct directories - A node in a linked list of directories
+ * @dir: A string representing a directory path
+ * @next: A pointer to the next node in the list
+ *
+ * Description: This struct is used to create a linked list of directories.
+ */
+
+typedef struct directories
+{
 	char *dir;
 	struct directories *next;
 } dirs;

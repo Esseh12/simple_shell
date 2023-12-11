@@ -17,7 +17,7 @@ This command compiles the shell.c file and outputs an executable file named shel
 2. Run the Shell: After successfully compiling the C source code, you can run the shell by executing the following command:
 	   ./shell
 This command runs the shell executable file.
-   
+
 ## Usage
 
 Running the shell executable and interacting with it through the command line. Here's a step-by-step guide on how to use it:
@@ -34,7 +34,7 @@ Here's how you can use the shell:
 4. Use Built-in Commands: If your shell has built-in commands (like cd, exit, etc.), you can use them directly in the shell. For example, you can change the current directory by typing cd /path/to/directory and pressing Enter.
 
 5. Handle Errors: If you try to execute a command that doesn't exist or if there's a problem with the command, the shell should print an error message.
-Exit the Shell: You can exit the shell by typing exit or .exit (or whatever exit command your shell supports) and pressing Enter 
+Exit the Shell: You can exit the shell by typing exit or .exit (or whatever exit command your shell supports) and pressing Enter
 
 ## Features
 
@@ -52,7 +52,7 @@ Thank you for considering contributing to the shell project :) Contributions are
 6. Commit your changes with a descriptive commit message: git commit -m "Add your commit message here"
 7. Push your changes to your forked repository: git push origin feature/your-feature.
 8. Open a pull request on the original repository. Provide a clear and descriptive title and description for your pull request, explaining the purpose and changes made.
-9. Wait for the project maintainer to review your pull request. Be open to feedback and address any requested changes or suggestions. Once your pull request is approved and merged, your contribution will become a part of the project. 
+9. Wait for the project maintainer to review your pull request. Be open to feedback and address any requested changes or suggestions. Once your pull request is approved and merged, your contribution will become a part of the project.
  Thank you for your contribution! Together, we can make the printf project even better :)
  If you have any questions or need further assistance, feel free to reach out to the project maintainer or team through the contact information provided in the "Contact" section of this README.
 
