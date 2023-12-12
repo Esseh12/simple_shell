@@ -24,6 +24,7 @@ typedef struct directories
 } dirs;
 
 void execmd(char *user_input);
+int handle_env(char **env);
 
 char *get_local(char *command);
 #endif /* MAIN_H */

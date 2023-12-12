@@ -44,5 +44,9 @@ void execmd(char *user_input)
 		perror("./shell");
 
 	while (counter--)
+	{
 		commands[counter] = NULL;
+		free(commands[counter]);
+	}
+	
 }
