@@ -11,6 +11,7 @@ int handle_env(char **env)
 	int count;
 	char **copy_env;
 	for (count = 0; env[count] != NULL; count++)
+
 		;
 
 	copy_env = malloc(sizeof(char *) * count);
