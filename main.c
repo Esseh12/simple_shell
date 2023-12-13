@@ -17,6 +17,7 @@ int main(int ac, char **av, char *envp[])
 
 	(void)ac;
 	(void)av;
+	(void)envp;
 
 	if (isatty(STDIN_FILENO))
 	{
@@ -30,12 +31,12 @@ int main(int ac, char **av, char *envp[])
 				return (0);
 
 			/* exiting the shell */
-			if (strcmp(user_input, "exit\n") == 0)
-				return (0);
+			/*if (strcmp(user_input, "exit\n") == 0)
+				return (0);*/
 
 			/* handling the builtin env */
-			if (strcmp(user_input, "env\n") == 0)
-				handle_env(envp);
+			/*if (strcmp(user_input, "env\n") == 0)
+				handle_env(envp);*/
 
 			/* execute the command */
 			execmd(user_input);

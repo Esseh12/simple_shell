@@ -17,10 +17,8 @@ void execmd(char *user_input)
 
 	/* Remove the \n in the command */
 	user_input = strtok(user_input, "\n");
-
 	/* tokenize command using strtok */
 	command = strtok(user_input, delim);
-
 	/* keep tokenizing the command */
 	while (command != NULL)
 	{
@@ -37,9 +35,9 @@ void execmd(char *user_input)
 		pid = fork();
 		wait(NULL);
 
-	if (pid == 0)
-		if (execve(actual_command, commands, NULL) == -1)
-			perror("./shell");
+		if (pid == 0)
+			if (execve(actual_command, commands, NULL) == -1)
+				perror("./shell");
 	}
 	else
 		perror("./shell");
