@@ -8,9 +8,9 @@
  */
 void execmd(char *user_input)
 {
-	char *command;
+	/*char *command;*/
 	char *commands[1024];
-	char *delim = " ";
+	/*char *delim = " ";*/
 	int counter = 0;
 	int pid;
 	char *actual_command;
@@ -18,14 +18,16 @@ void execmd(char *user_input)
 	/* Remove the \n in the command */
 	user_input = strtok(user_input, "\n");
 	/* tokenize command using strtok */
-	command = strtok(user_input, delim);
+	/*command = strtok(user_inut, delim);*/
 	/* keep tokenizing the command */
-	while (command != NULL)
+	/*while (command != NULL)
 	{
 		commands[counter] = strdup(command);
 		command = strtok(NULL, delim);
 		counter++;
-	}
+	}*/
+
+	commands[0] = user_input;
 
 	/* create a new process that will execute the command */
 	/*actual_command = get_local(commands[0]);*/
