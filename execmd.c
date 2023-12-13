@@ -30,7 +30,8 @@ void execmd(char *user_input)
 	}
 
 	/* create a new process that will execute the command */
-	actual_command = get_local(commands[0]);
+	/*actual_command = get_local(commands[0]);*/
+	actual_command = user_input;
 	if (actual_command != NULL)
 	{
 		pid = fork();
