@@ -3,20 +3,21 @@
 #define MAX_TOKENS 50
 /**
  * main - simple shell
- * @ac: arguments coun
- * @av: an array of strings of argument
+ * @argc: arguments coun
+ * @argv: an array of strings of argument
  * @envp: array of strings of environment variables
  *
  * Return: 0 always
  */
-int main(int ac, char **av, char *envp[])
+int main(int argc, char **argv, char *envp[])
 {
 	char *user_input;
+	char *commands[1024];
 	size_t size_of_command = 32;
 	const char *str = "#cisfun$ ";
+	int pid;
 
-	(void)ac;
-	(void)av;
+	(void)argc;
 	(void)envp;
 
 	if (isatty(STDIN_FILENO))
@@ -29,25 +30,28 @@ int main(int ac, char **av, char *envp[])
 			/* get input from user and also handle EOF or CTRL + D*/
 			if (getline(&user_input, &size_of_command, stdin) == -1)
 				return (0);
+			user_input = strtok(user_input, "\n");
 
-			/* exiting the shell */
-			/*if (strcmp(user_input, "exit\n") == 0)
-				return (0);*/
+			commands[0] = user_input;
+			pid = fork();
+			wait(NULL);
+			if (pid == 0)
+				if (execve(user_input, commands, NULL) == -1)
+					perror(argv[0]);
 
-			/* handling the builtin env */
-			/*if (strcmp(user_input, "env\n") == 0)
-				handle_env(envp);*/
-
-			/* execute the command */
-			execmd(user_input);
 		}
 	}
 	else
 	{
 		getline(&user_input, &size_of_command, stdin);
 
-		/* calling the execmd function */
-		execmd(user_input);
+		user_input = strtok(user_input, "\n");
+		commands[0] = user_input;
+		pid = fork();
+		wait(NULL);
+		if (pid == 0)
+			if (execve(user_input, commands, NULL) == -1)
+				perror(argv[0]);
 	}
 	return (0);
 }
