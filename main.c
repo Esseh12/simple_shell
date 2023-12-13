@@ -53,6 +53,7 @@ int main(int argc, char **argv, char *envp[])
 		if (pid == 0)
 			if (execve(user_input, commands, NULL) == -1)
 				perror(argv[0]);
+		free(user_input);
 	}
 	return (0);
 }
