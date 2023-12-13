@@ -17,9 +17,12 @@ int main(int ac, char **av, char *envp[])
 	const char *str = "($)  ";
 	char *user_input_copy = NULL;
 	ssize_t num_char;
+	char *command = NULL;
+	char *delim = ":";
+	int token_num = 0;
+	int counter = 0;
 
 	(void)ac;
-	(void)av;
 
 		while (1)
 		{
@@ -33,6 +36,33 @@ int main(int ac, char **av, char *envp[])
 			user_input_copy = malloc(sizeof(char) * num_char);
 			strcpy(user_input_copy, user_input);
 
+			 command = strtok(user_input, delim);
+
+        		/* checking number of words in commands */
+        	while (command != NULL)
+        	{
+                	token_num++;
+                	command = strtok(NULL, delim);
+
+        	}
+
+        	token_num++;
+        	/* allocate memory for commands */
+        	av = malloc(sizeof(char *) * token_num);
+        	command = strtok(user_input_copy, delim);
+
+        /* keep tokenizing the command */
+        	while (command != NULL)
+        	{
+			
+                	av[counter] = malloc(sizeof(char) * strlen(command));
+			strcpy(av[counter], command);
+                	command = strtok(NULL, delim);
+                	counter++;
+        	}
+		av[counter] = NULL;
+		counter = 0;
+
 			if (strcmp(user_input, "exit\n") == 0)
 				return (0);
 
@@ -41,7 +71,7 @@ int main(int ac, char **av, char *envp[])
 				handle_env(envp);
 
 			/* execute the command */
-			execmd(user_input_copy);
+			execmd(av);
 			free(user_input_copy);
 		}
 		free(user_input);

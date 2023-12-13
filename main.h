@@ -23,7 +23,7 @@ typedef struct directories
 	struct directories *next;
 } dirs;
 
-void execmd(char *user_input);
+void execmd(char *av[]);
 int handle_env(char **env);
 
 char *get_local(char *command);
