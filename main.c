@@ -13,7 +13,7 @@ int main(int ac, char **av, char *envp[])
 {
 	char *user_input;
 	size_t size_of_command = 32;
-	const char *str = "$ ";
+	const char *str = "($)  ";
 
 	(void)ac;
 	(void)av;
@@ -22,7 +22,7 @@ int main(int ac, char **av, char *envp[])
 	{
 		while (1)
 		{
-			write(1, str, 2);
+			write(1, str, 4);
 
 			/* get input from user and also handle EOF or CTRL + D*/
 			if (getline(&user_input, &size_of_command, stdin) == -1)
