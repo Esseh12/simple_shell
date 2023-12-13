@@ -9,8 +9,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
-void execmd(char *user_input);
+void execmd(char *user_input, char **argv);
 int handle_env(char **env);
-
 char *get_local(char *command);
+void free_env(char **envp);
 #endif /* SHELL_H */

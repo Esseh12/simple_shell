@@ -6,7 +6,7 @@
  *
  * Return: 0 always
  */
-void execmd(char *user_input)
+void execmd(char *user_input, char **argv)
 {
 	char *command;
 	char *commands[1024];
@@ -34,14 +34,16 @@ void execmd(char *user_input)
 	if (actual_command != NULL)
 	{
 		pid = fork();
-		wait(NULL);
-
-	if (pid == 0)
-		if (execve(actual_command, commands, NULL) == -1)
-			perror("./shell");
+		if (pid == 0)
+		{
+			if (execve(actual_command, commands, NULL) == -1)
+				fprintf(stderr, "%s: %s\n", argv[0], "not found");
+		}
+		else
+			wait(NULL);
 	}
 	else
-		perror("./shell");
+		fprintf(stderr, "%s: %s\n", argv[0], "not found");
 
 	while (counter--)
 	{
