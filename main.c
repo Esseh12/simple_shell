@@ -23,6 +23,7 @@ int main(int ac, char **av, char *envp[])
 		while (1)
 		{
 			write(1, str, 4);
+			fflush(stdout);
 
 			/* get input from user and also handle EOF or CTRL + D*/
 			if (getline(&user_input, &size_of_command, stdin) == -1)
