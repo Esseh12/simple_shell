@@ -21,18 +21,14 @@ int main(int ac, char **av, char *envp[])
 	(void)ac;
 	(void)av;
 
-	if (isatty(STDIN_FILENO))
-	{
 		while (1)
 		{
 			write(1, str, 4);
-		
 			/* get input from user and also handle EOF or CTRL + D*/
 			num_char = getline(&user_input, &size_of_command, stdin);
 			if (num_char == -1)
 				return (-1);
 			/* exiting the shell */
-			
 			/* allocate a space for user_input_copy */
 			user_input_copy = malloc(sizeof(char) * num_char);
 			strcpy(user_input_copy, user_input);
@@ -49,17 +45,17 @@ int main(int ac, char **av, char *envp[])
 			free(user_input_copy);
 		}
 		free(user_input);
-	}
-	else
+	/**else
 	{
 		num_char = getline(&user_input, &size_of_command, stdin);
 		user_input_copy = malloc(sizeof(char) * num_char);
 		strcpy(user_input_copy, user_input);
 		
-		/* calling the execmd function */
+		 calling the execmd function 
 		execmd(user_input_copy);
 		free(user_input_copy);
 		free(user_input);
-	}
+} */
+
 	return (0);
 }
