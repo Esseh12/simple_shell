@@ -21,7 +21,11 @@ char *get_local(char *command)
 		temp_path = malloc(strlen(file_path) + strlen(command) + 2);
 
 		if (stat(command, &st_t) == 0)
+		{
+			free(file_path);
+			free(temp_path);
 			return (command);
+		}
 
 		strcpy(temp_path, path_token);
 		strcat(temp_path, "/");
