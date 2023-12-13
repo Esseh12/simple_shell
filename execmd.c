@@ -30,28 +30,15 @@ void execmd(char *user_input)
 	}
 
 	/* create a new process that will execute the command */
-	
-	/**  actual_command = get_local(commands[0]); 
+	actual_command = get_local(commands[0]);
 	if (actual_command != NULL)
 	{
 		pid = fork();
 		wait(NULL);
-	*/
 
-	/* phind */
-	if (counter > 0 && commands[0] != NULL)
-	{
-		actual_command = get_local(commands[0]);
-		if (actual_command != NULL)
-		{
-			pid = fork();
-			wait(NULL);
-
-	/*phind */
-
-		if (pid == 0)
-			if (execve(actual_command, commands, NULL) == -1)
-				perror("./shell");
+	if (pid == 0)
+		if (execve(actual_command, commands, NULL) == -1)
+			perror("./shell");
 	}
 	else
 		perror("./shell");
@@ -61,6 +48,4 @@ void execmd(char *user_input)
 		commands[counter] = NULL;
 		free(commands[counter]);
 	}
-	
-}
 }
