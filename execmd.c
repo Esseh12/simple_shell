@@ -11,7 +11,6 @@ void execmd(char *av[])
 	char *command = NULL;
 	char *actual_command = NULL;
 	pid_t pid;
-	int status;
 
 	if (av)
 	{
@@ -29,10 +28,6 @@ void execmd(char *av[])
 				perror("./shell");
 		}
 		else
-		{
-			do {
-				waitpid(pid, &status, WUNTRACED);
-			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
-		}
+			wait(NULL);
 	}
 }
