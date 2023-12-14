@@ -26,7 +26,7 @@ void execmd(char *av[])
 
 			/* execute the actual command with execve */
 			if (execve(actual_command, av, NULL) == -1)
-				perror("Error:");
+				perror("./shell");
 		}
 		else
 			waitpid(pid, &status, 0);
