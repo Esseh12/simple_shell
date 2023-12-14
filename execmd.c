@@ -16,8 +16,8 @@ void execmd(char *av[])
 	int pid;
 	char *actual_command;
 
-	/* Remove the \n in the command */
-	av[0] = strtok(av[0], "\n");
+	/**Remove the \n in the command 
+	av[0] = strtok(av[0], "\n"); */
 
 	/** tokenize command using strtok 
 	command = strtok(user_input, delim);
