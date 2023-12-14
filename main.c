@@ -40,7 +40,7 @@ int main(int ac, char **av, char *envp[])
 		}
 		av[i] = NULL;
 		if (strcmp(user_input, "exit") == 0)
-			return (0);
+			handle_exit(av);
 		if (strcmp(user_input, "env") == 0)
 			handle_env(envp);
 		execmd(av);
