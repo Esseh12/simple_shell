@@ -24,13 +24,19 @@ int main(int ac, char **av, char *envp[])
 
 		tokenizer(&av, user_input);
 
-		if (strcmp(user_input, "exit") == 0)
+		if (strcmp(av[0], "cd") == 0)
+			change_dir(av[1]);
+		else if (strcmp(user_input, "exit") == 0)
 			handle_exit(av);
-		if (strcmp(user_input, "env") == 0)
+		else if (strcmp(user_input, "env") == 0)
+		{
 			handle_env(envp);
-		execmd(av);
+			execmd(av);
+		}
+		else
+			execmd(av);
 	}
 	free(user_input);
 	/*free(user_input_copy);*/
-return (0);
+	return (0);
 }

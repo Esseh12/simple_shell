@@ -17,4 +17,5 @@ char *get_local(char *command);
 ssize_t _getline(char **lineptr, size_t *n);
 void handle_exit(char **av);
 void tokenizer(char ***av, char *token);
+void change_dir(char *dir);
 #endif /* SHELL_H */
