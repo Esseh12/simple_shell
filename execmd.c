@@ -29,6 +29,10 @@ void execmd(char *av[])
 				perror("./shell");
 		}
 		else
-			waitpid(pid, &status, 0);
+		{
+			do {
+				waitpid(pid, &status, WUNTRACED);
+			} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		}
 	}
 }
