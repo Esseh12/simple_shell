@@ -60,31 +60,19 @@ int main(int ac, char **av, char *envp[])
         	}
 		av[i] = NULL;
 
-		/**
 		if (strcmp(user_input, "exit") == 0)
 			return (0);
 
-		 handling the builtin env 
+		 /* handling the builtin env */
 		if (strcmp(user_input, "env") == 0)
 			handle_env(envp);
-		*/
+		
 		/* execute the command */
 		execmd(av);
 	} 
 
 	free(user_input);
 	free(user_input_copy);
-	/**else
-	{
-		num_char = getline(&user_input, &size_of_command, stdin);
-		user_input_copy = malloc(sizeof(char) * num_char);
-		strcpy(user_input_copy, user_input);
-		
-		 calling the execmd function 
-		execmd(user_input_copy);
-		free(user_input_copy);
-		free(user_input);
-} */
 
 	return (0);
 }
