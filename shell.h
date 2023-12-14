@@ -11,6 +11,8 @@
 
 void execmd(char *av[]);
 int handle_env(char **env);
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 char *get_local(char *command);
+ssize_t _getline(char **lineptr, size_t *n);
 #endif /* SHELL_H */
