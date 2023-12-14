@@ -18,9 +18,11 @@ int main(int ac, char **av, char *envp[])
 	char *command = NULL;
 	const char *delim = " \n";
 	int token_num = 0;
-	int counter = 0;
+	/* int counter = 0; */
+	int i;
 
 	(void)ac;
+	(void)envp;
 
 	while (1)
 	{
@@ -49,27 +51,26 @@ int main(int ac, char **av, char *envp[])
         	command = strtok(user_input_copy, delim);
 
         	/* keep tokenizing the command */
-        	while (command != NULL)
+        	for (i = 0; command != NULL; i++)
         	{
 			
-                	av[counter] = malloc(sizeof(char) * strlen(command));
-			strcpy(av[counter], command);
+                	av[i] = malloc(sizeof(char) * strlen(command));
+			strcpy(av[i], command);
                 	command = strtok(NULL, delim);
-                	counter++;
         	}
-		av[counter] = NULL;
-		counter = 0;
+		av[i] = NULL;
 
+		/**
 		if (strcmp(user_input, "exit") == 0)
 			return (0);
 
-		/* handling the builtin env */
+		 handling the builtin env 
 		if (strcmp(user_input, "env") == 0)
 			handle_env(envp);
-
+		*/
 		/* execute the command */
 		execmd(av);
-	}
+	} 
 
 	free(user_input);
 	free(user_input_copy);
