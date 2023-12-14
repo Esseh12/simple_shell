@@ -10,7 +10,6 @@ void execmd(char *av[])
 {
 	char *command = NULL;
 	char *actual_command = NULL;
-	pid_t pid;
 
 	if (av)
 	{
