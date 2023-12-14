@@ -11,6 +11,7 @@ void execmd(char *av[])
 	char *command = NULL;
 	char *actual_command = NULL;
 	pid_t pid;
+	int status;
 
 	if (av)
 	{
@@ -28,6 +29,6 @@ void execmd(char *av[])
 				perror("Error:");
 		}
 		else
-			wait(NULL);
+			waitpid(pid, &status, 0);
 	}
 }
