@@ -25,6 +25,7 @@ typedef struct directories
 
 void execmd(char *av[]);
 int handle_env(char **env);
+void tokenizer(char ***av, char *token);
 
 char *get_local(char *command);
 #endif /* MAIN_H */

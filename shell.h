@@ -16,4 +16,5 @@ ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 char *get_local(char *command);
 ssize_t _getline(char **lineptr, size_t *n);
 void handle_exit(char **av);
+void tokenizer(char ***av, char *token);
 #endif /* SHELL_H */
