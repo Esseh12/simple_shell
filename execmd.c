@@ -18,9 +18,7 @@ void execmd(char *av[])
 
 		/* generate the path to this command before passing it to execve */
 		actual_command = get_local(command);
-
-		/* execute the actual command with execve */
-		if (execve(actual_command, av, NULL) == -1)
-			perror("./shell");
+		loc_execve(actual_command, av);
+		
 	}
 }

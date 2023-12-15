@@ -10,6 +10,7 @@
 #include <sys/stat.h>
 
 void execmd(char *av[]);
+void loc_execve(char *command, char *av[]);
 int handle_env(char **env);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
