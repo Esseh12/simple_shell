@@ -20,8 +20,7 @@ void execmd(char *av[])
 		actual_command = get_local(command);
 
 		/* using execve to execute the command */
-		 if (execve(actual_command, av, NULL) == -1)
-                        perror("./shell");
-		
+		if (execve(actual_command, av, NULL) == -1)
+			perror("./shell");
 	}
 }
