@@ -19,7 +19,9 @@ int main(int ac, char **av, char *envp[])
 	{
 		if (isatty(STDIN_FILENO) == 1)
 			printf("%s", str);
+
 		num_char = getline(&user_input, &size_of_command, stdin);
+
 		if (num_char == -1)
 			break;
 
@@ -43,4 +45,5 @@ int main(int ac, char **av, char *envp[])
 	free(user_input);
 	/*free(user_input_copy);*/
 	return (0);
+
 }
