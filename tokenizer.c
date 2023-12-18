@@ -13,7 +13,7 @@ void tokenizer(char ***av, char *token)
 	char *token_copy = NULL;
 	char *tok = NULL;
 	const char *delim = "\n ";
-	int token_num = 0, i = 0;
+	int j, token_num = 0, i = 0;
 
 	token_copy = malloc(sizeof(char) * (strlen(token) + 1));
 	strcpy(token_copy, token);
@@ -31,8 +31,17 @@ void tokenizer(char ***av, char *token)
 	tok = strtok(token_copy, delim);
 	for (i = 0; tok != NULL; i++)
 	{
-		(*av)[i] = malloc(sizeof(char) * strlen(tok) + 1);
-		strcpy((*av)[i], tok);
+		(*av)[i] = strdup(tok);
+
+		if ((*av)[i] == NULL)
+		{
+			for (j = 0; j < i; j++)
+				free((*av)[j]);
+			free(*av);
+			free(token_copy);
+			return;
+		}
+
 		tok = strtok(NULL, delim);
 	}
 	(*av)[i] = NULL;

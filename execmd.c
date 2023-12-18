@@ -20,14 +20,8 @@ void execmd(char *av[])
 		/* generate the path to this command before passing it to execve */
 		actual_command = get_local(command);
 
-		pid = fork();
-		if (pid == 0)
-		{
-			/* using execve to execute the command */
-			if (execve(actual_command, av, NULL) == -1)
-				perror("./shell");
-		}
-		else
-			wait(NULL);
+		/* using execve to execute the command */
+		if (execve(actual_command, av, NULL) == -1)
+			perror("./shell");
 	}
 }
