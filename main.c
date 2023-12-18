@@ -21,18 +21,18 @@ int main(int ac, char **av, char *envp[])
 			printf("%s", str);
 		num_char = getline(&user_input, &size_of_command, stdin);
 		if (num_char == -1)
-			return (-1);
+			break;
 
 		tokenizer(&av, user_input);
 
 		if (av[0] == NULL)
-			return (-1);
+			break;
 
 		if (strcmp(av[0], "cd") == 0)
 			change_dir(av[1]);
-		else if (strcmp(user_input, "exit") == 0)
+		else if (strcmp(av[0], "exit") == 0)
 			handle_exit(av);
-		else if (strcmp(user_input, "env") == 0)
+		else if (strcmp(av[0], "env") == 0)
 		{
 			handle_env(envp);
 			execmd(av);
