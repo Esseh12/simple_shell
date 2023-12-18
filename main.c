@@ -17,12 +17,16 @@ int main(int ac, char **av, char *envp[])
 	(void)envp;
 	while (1)
 	{
-		printf("%s", str);
+		if (isatty(STDIN_FILENO) == 1)
+			printf("%s", str);
 		num_char = getline(&user_input, &size_of_command, stdin);
 		if (num_char == -1)
 			return (-1);
 
 		tokenizer(&av, user_input);
+
+		if (av[0] == NULL)
+			return (-1);
 
 		if (strcmp(av[0], "cd") == 0)
 			change_dir(av[1]);
