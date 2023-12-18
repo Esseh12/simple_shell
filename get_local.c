@@ -15,12 +15,6 @@ char *get_local(char *command)
 	struct stat st, st_t;
 	char *temp_path;
 
-	if (path == NULL)
-	{
-		free(file_path);
-		return (NULL);
-	}	
-
 	while (path_token != NULL)
 	{
 		/* allocate memory */
